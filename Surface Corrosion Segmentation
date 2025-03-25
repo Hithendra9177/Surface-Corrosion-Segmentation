@@ -1,0 +1,64 @@
+"name": "Python 3",
+
+3	+
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+4	+
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
+5	+
+  "customizations": {
+6	+
+    "codespaces": {
+7	+
+      "openFiles": [
+8	+
+        "README.md",
+9	+
+        "app.py"
+10	+
+      ]
+11	+
+    },
+12	+
+    "vscode": {
+13	+
+      "settings": {},
+14	+
+      "extensions": [
+15	+
+        "ms-python.python",
+16	+
+        "ms-python.vscode-pylance"
+17	+
+      ]
+18	+
+    }
+19	+
+  },
+20	+
+  "updateContentCommand": "[ -f packages.txt ] && sudo apt update && sudo apt upgrade -y && sudo xargs apt install -y <packages.txt; [ -f requirements.txt ] && pip3 install --user -r requirements.txt; pip3 install --user streamlit; echo '✅ Packages installed and Requirements met'",
+21	+
+  "postAttachCommand": {
+22	+
+    "server": "streamlit run app.py --server.enableCORS false --server.enableXsrfProtection false"
+23	+
+  },
+24	+
+  "portsAttributes": {
+25	+
+    "8501": {
+26	+
+      "label": "Application",
+27	+
+      "onAutoForward": "openPreview"
+28	+
+    }
+29	+
+  },
+30	+
+  "forwardPorts": [
+31	+
+    8501
+32	+
+  ]
+33	+
+}
